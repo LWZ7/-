@@ -44,4 +44,66 @@ class Solution:
             temp.next = ListNode(0)
             temp = temp.next
         return res
-            
+#------------------------------下面是自己写的----------------------------------------------
+class Solution:
+    def addTwoNumbers(self, l1, l2):
+        """
+        :type l1: ListNode
+        :type l2: ListNode
+        :rtype: ListNode
+        """
+        if not l1 and not l2:
+            return None
+        if not l2 and l1:
+            return l1
+        if not l1 and l2:
+            return l2
+        a = ListNode(0)
+        head = a
+        temp = 0
+        while l1 and l2:
+            temp = l1.val+l2.val+temp
+            if temp >= 10:
+                b = ListNode(int(temp % 10))
+                temp = int(temp/10)
+            else:
+                b = ListNode(temp)
+                temp = 0
+            a.next = b
+            a = a.next
+            l1 = l1.next
+            l2 = l2.next
+        if not l2 and l1:
+            while l1:
+                temp = l1.val+temp
+                if temp >= 10:
+                    b = ListNode(int(temp % 10))
+                    temp = int(temp/10)
+                else:
+                    b = ListNode(temp)
+                    temp = 0
+                a.next = b
+                a = a.next   
+                l1 = l1.next
+            if temp != 0:
+                b = ListNode(int(temp))
+                a.next = b
+        if not l1 and l2:
+            while l2:
+                temp = l2.val+temp
+                if temp >= 10:
+                    b = ListNode(int(temp % 10))
+                    temp = int(temp/10)
+                else:
+                    b = ListNode(temp)
+                    temp = 0
+                a.next = b
+                a = a.next   
+                l2 = l2.next
+            if temp != 0:
+                b = ListNode(int(temp))
+                a.next = b
+        if not l2 and not l1:
+            if temp!=0:
+                a.next = ListNode(int(temp))
+        return head.next
