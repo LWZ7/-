@@ -38,3 +38,4 @@ class Solution:
             d[s[i]] = i
             res = max(res , temp)
         return res
+#从头遍历一遍，并用字典记录出现过的字符串，如果发现有字符已经出现在字典中，就舍弃掉前面的所有字符串，从当前字符开始算长度 
