@@ -21,4 +21,7 @@ class Solution:
             else:
                 right-=1
         return res
-        
+'''
+采用对撞指针法，面积=min(a[left] , a[right])*(right-left)
+计算完面积后，那条边长度短，就移动哪条边
+'''
