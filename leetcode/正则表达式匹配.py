@@ -44,3 +44,26 @@ s = "mississippi"
 p = "mis*is*p*."
 输出: false
 '''
+class Solution:
+    def isMatch(self, s: str, p: str) -> bool:
+        if p == "":
+            return s == ""
+            #p为空的时候，判断s是否为空，s为空返回True，s不为空返回False
+        if len(p) == 1:
+            return len(s) == 1 and (s[0] == p[0] or p[0] == ".")
+            #如果s的长度为1，p[0]==s[0]或者p[0]=="." , 返回True
+        if p[1] != "*":
+            if s == "":
+                return False
+                #如果p[1]!="*",且s是空字符串，返回False
+            return (s[0] == p[0] or p[0] == ".") and self.isMatch(s[1:] , p[1:])
+        
+        while s and (s[0] == p[0] or p[0] == "."):
+            #到了while循环，说明p[1]为*，所以递归调用匹配s和p[2](*之后的匹配规则)
+            #用于跳出函数，当s循环到和*不匹配的时候，则开始去匹配p[2:]之后的规则
+            if self.isMatch(s , p[2:]):
+                return True
+            #当匹配字符串和匹配规则*都能匹配的时候，去掉第一个字符成为新的匹配字符串，
+            s = s[1:]
+        #假如第一个字符串和匹配规则不匹配，则去判断之后的是否匹配
+        return self.isMatch(s , p[2:])
