@@ -41,6 +41,7 @@ class Solution:
                     else:
                         left += 1
         return res
-#从头到尾遍历一遍，然后每次遍历用一次双指针法,双指针循环中要加两个while循环，避免重复                    
+#从头到尾遍历一遍，然后每次遍历用一次双指针法,双指针循环中要加两个while循环，避免重复  
+#if i==0 or nums[i]>nums[i-1]的作用也是为了防止重复
             
         
