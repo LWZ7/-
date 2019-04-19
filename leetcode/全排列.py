@@ -25,9 +25,10 @@ class Solution:
             for i in range(start , b):
                 if i!=start and nums[i]==nums[start]:
                     continue
+                #为什么要有这个if判断？
                 a[i],a[start] = a[start],a[i]
                 c = tuple(a)
-                self.helper(c , start+1)
+                self.helper(c , start+1)#为什么是start+1？
                 a[i],a[start] = a[start],a[i]
     def permute(self, nums: List[int]) -> List[List[int]]:
         self.res = []
