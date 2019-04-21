@@ -36,3 +36,6 @@ class Solution:
                 res.append(root.val)
                 root = root.right
         return res
+#需要两个list，一个作为栈使用，另一个保存遍历结果。
+#如果不用两个栈的话循环无法退出
+#如果是空节点，就从栈里面弹出父节点，然后看它有没有右节点
