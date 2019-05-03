@@ -25,3 +25,5 @@ class Solution:
                     mem[j] = min(mem[j], mem[j - coin] + 1)
                 
         return -1 if mem[-1] > amount else mem[-1]
+    
+#这道题只用建立一个一维数组就可以解决，而不用建二维数组，建二维数组不仅费内存，而且利用coin值不方便，直接用coins数组遍历就可以了
