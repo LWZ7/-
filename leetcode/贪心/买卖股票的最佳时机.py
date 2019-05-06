@@ -31,4 +31,15 @@ class Solution:
             else:
                 a = prices[i]
         return max
+#######################动态规划########################
+    def maxProfit(self, prices: List[int]) -> int:
+        if len(prices)==0:
+            return 0
+        min_p = prices[0]
+        max_p = 0
+        for i in range(1 , len(prices)):
+            min_p = min(min_p , prices[i])
+            max_p = max(max_p , prices[i]-min_p)
+        return max_p
+#最高价格=max(当前最高价格  , 当前价格-前几天的最低价格)
                 
