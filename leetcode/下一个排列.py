@@ -37,4 +37,10 @@ class Solution:
                 break
         nums[firstIndex],nums[secondIndex] = nums[secondIndex], nums[firstIndex]
         reverse(nums, firstIndex+1, n-1)
+'''
+先找出最大的索引 k 满足 nums[k] < nums[k+1]，如果不存在，就翻转整个数组；
+再找出另一个最大索引 l 满足 nums[l] > nums[k]；
+交换 nums[l] 和 nums[k]；
+最后翻转 nums[k+1:]。
+'''
         
