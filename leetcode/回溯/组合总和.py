@@ -29,15 +29,22 @@ class Solution:
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
         n = len(candidates)
         res = []
-        def helper(i, tmp_sum, tmp):
-            if tmp_sum > target or i == n:
-                return 
-            if tmp_sum == target:
-                res.append(tmp)
-                return 
-            helper(i,  tmp_sum + candidates[i],tmp + [candidates[i]])
-            helper(i+1, tmp_sum ,tmp)
-        helper(0, 0, [])
+        candidates = sorted(candidates)
+        
+        def helper(temp , index):
+            if sum(temp)>target or index==n:
+                return
+            if sum(temp)==target:
+                res.append(temp)
+                return
+            helper(temp+[candidates[index]] , index)
+            #排序后，如果有一个组合是大于target的，那么这个组合后面的数都不需要再试了
+            #比如[2 , 2 ,6]大于7，那么不需要再尝试[2 , 2 , 7]了
+            if sum(temp+[candidates[index]])<target:
+                #这一步是回退，尝试用别的数，所以不应该把[candidates[index]]加上，index需要加1
+                helper(temp , index+1)
+        
+        helper([] , 0)
         return res
         
 #首先判断列表元素的和是不是大于目标数了，并且判断是否遍历到了总列表的最后一个元素，符合条件的话直接退出
