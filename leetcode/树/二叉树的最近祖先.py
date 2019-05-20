@@ -54,3 +54,6 @@ class Solution:
         
     def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
         return self.helper(root , p , q)
+'''
+因为题目说了p,q都在二叉树中，所以可以递归，如果p或q在左子树中，则返回左子树返回的结果，如果p或q在右子树中，返回右子树返回的结果，如果p,q分别在左右子树中，返回自身
+'''
